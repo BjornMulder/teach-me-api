@@ -5,18 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Topic extends Model
+class ChatGptPrompt extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'description',
-        'length',
+        'prompt',
     ];
 
-    public function learningBlocks()
+    public function responses()
     {
-        return $this->hasMany(LearningBlock::class);
+        return $this->hasMany(ChatGptResponse::class);
     }
 }

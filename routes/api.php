@@ -20,3 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/topics', [TopicController::class, 'index']);
+
+Route::get('/topics/{TopicId}', [TopicController::class, 'show']);
+
+Route::post('/topics', [TopicController::class, 'store']);
