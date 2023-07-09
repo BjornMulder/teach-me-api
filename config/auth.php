@@ -13,10 +13,8 @@ return [
     |
     */
 
-    'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
-    ],
+ 'defaults' => [ 'guard' => 'admin', 'passwords' => 'users', ],
+
 
     /*
     |--------------------------------------------------------------------------

@@ -44,7 +44,8 @@ class TopicController extends Controller
 
         $modelResponse = $this->handleApiResponse($chatGptPrompt, $apiResponse);
 
-        $learningBlocks = json_decode($modelResponse->responses()->first()->response)->learningBlocks;
+        $learningBlocks = json_decode(json_decode($modelResponse->responses()->first())->response)->learningBlocks;
+
         $summary = json_decode($modelResponse->responses()->first()->response)->summary;
 
         $topic = Topic::create(['name' => $request->name, 'description' => $summary, 'length' => 1]);
@@ -54,7 +55,7 @@ class TopicController extends Controller
             $topic->learningBlocks()->create([
                 'title' => $learningBlock->title,
                 'content' => $learningBlock->content,
-                'order' => $learningBlock->order,
+                'order' => $learningBlock->order ?? 0,
             ]);
         }
 
